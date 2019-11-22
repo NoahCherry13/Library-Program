@@ -1,10 +1,13 @@
 package bigBrain;
 
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import BreezySwing.GBDialog;
 
 public class AddBook extends GBDialog{
+	
 	JLabel titlelbl = addLabel("Title:",1,1,1,1);
 	JTextField titleFld = addTextField("",1,2,1,1);
 	JLabel authorlbl = addLabel ("Author",2,1,1,1);
@@ -18,9 +21,12 @@ public class AddBook extends GBDialog{
 	JLabel yearlbl = addLabel ("Year Borrowed",6,1,1,1);
 	JTextField yearFld = addTextField("",6,2,1,1);
 	JButton enterButton = addButton("Search",7,1,1,1); 
-	public AddBook(JFrame parent) {	
+	
+	ArrayList<Books> books;
+	
+	public AddBook(JFrame parent, ArrayList <Books> list) {	
 		super(parent);
-		
+		books = list;
 	}
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == enterButton) {

@@ -24,12 +24,12 @@ public class LibraryGUI extends GBFrame {
 	ArrayList<Books> books = new ArrayList<Books>(); 
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == addBookButton) {
-			AddBook newBook = new AddBook(this);
+			AddBook newBook = new AddBook(this, books);
 			newBook.setModalityType(ModalityType.APPLICATION_MODAL);
 			newBook.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			newBook.setVisible(true);
 		} else if (buttonObj == checkOut) {
-
+			
 		} else if (buttonObj == returnBook) {
 
 		} else if (buttonObj == outputButton) {

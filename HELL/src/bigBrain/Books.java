@@ -1,25 +1,22 @@
 package bigBrain;
 
-import java.util.ArrayList;
-
 public class Books {
-	String bookName;
-	String author;
-	String borrower;
-	int month;
-	int day;
-	int year;
-	boolean loaned = false;
-	boolean overdue = false;
-	ArrayList<Books> books;
+	private String bookName;
+	private String author;
+	private String borrower;
+	private int month;
+	private int day;
+	private int year;
+	private boolean loaned = false;
+	private boolean overdue = false;
 	
-	public Books(String bn, String a, int m, int d, int y, ArrayList<Books> c) {
+	private Date d;
+	
+	public Books(String bn, String a) {
 		bookName = bn;
 		author = a;
-		month = m;
-		day = d;
-		year = y;
-		books = c;
+		borrower = null;
+		d = new Date();
 	}
 	public void setLoaned() {
 		loaned = !loaned;
