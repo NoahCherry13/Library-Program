@@ -1,7 +1,7 @@
 package bigBrain;
 
 public class Books {
-	private String bookName;
+	private String title;
 	private String author;
 	private String borrower;
 	private int month;
@@ -13,7 +13,7 @@ public class Books {
 	private Date d;
 	
 	public Books(String bn, String a) {
-		bookName = bn;
+		title = bn;
 		author = a;
 		borrower = null;
 		d = new Date();
@@ -21,8 +21,8 @@ public class Books {
 	public void setLoaned() {
 		loaned = !loaned;
 	}
-	public String getBookName() {
-		return bookName;
+	public String getTitle() {
+		return title;
 	}
 	public String getAuthor() {
 		return author;

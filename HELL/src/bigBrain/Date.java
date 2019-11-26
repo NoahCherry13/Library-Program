@@ -73,6 +73,6 @@ public class Date {
 			throw new IllegalDate("Invalid Month");
 		}
 		// Add BC
-		if (year < 0||)
+		if (year < 0) throw new IllegalDate("Invalid year");
 	}
 }

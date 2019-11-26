@@ -37,7 +37,7 @@ public class LibraryGUI extends GBFrame {
 		} else if (buttonObj == overdueButton) {
 
 		} else if (buttonObj == searchButton) {
-
+			Search findBook = new Search(this, books);
 		}
 	}
 
