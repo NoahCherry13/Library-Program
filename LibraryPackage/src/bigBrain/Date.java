@@ -39,6 +39,18 @@ public class Date {
 		day = d;
 	}
 
+	public int getDay() {
+		return day;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
 	private Calendar simplifyTime(Calendar c) {
 		c.setTimeZone(TimeZone.getTimeZone("EST"));
 		c.set(Calendar.HOUR_OF_DAY, 0);
@@ -58,21 +70,27 @@ public class Date {
 
 	public int daysInMonth(int m, int y) {
 		int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		if (month==2 && y % 100 == 0 && y % 4 != 0)
+		if (month == 2 && y % 100 == 0 && y % 4 != 0)
 			return 28;
-		else if (m==2 && y % 4 == 0)
+		else if (m == 2 && y % 4 == 0)
 			return 29;
-		else return daysInMonth[m-1];
+		else if (month == 0)
+			return 0;
+		else
+			return daysInMonth[m - 1];
 	}
-	
-	public void checkValid () throws IllegalDate {
-		if (day > daysInMonth (month, year)|| day<=0) {
+
+	public void checkValid() throws IllegalDate {
+		if (daysInMonth(month, year) == 0)
+			throw new IllegalDate("Invalid Month");
+		if (day > daysInMonth(month, year) || day <= 0) {
 			throw new IllegalDate("Invalid Day");
 		}
-		if (month <=0 || month >12) {
+		if (month <= 0 || month > 12) {
 			throw new IllegalDate("Invalid Month");
 		}
 		// Add BC
-		if (year < 0) throw new IllegalDate("Invalid year");
+		if (year < 0)
+			throw new IllegalDate("Invalid year");
 	}
 }

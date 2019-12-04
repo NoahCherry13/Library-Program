@@ -29,13 +29,13 @@ public class LibraryGUI extends GBFrame {
 			newBook.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			newBook.setVisible(true);
 		} else if (buttonObj == checkOut) {
-			
+			LoanBook loan = new LoanBook(this, books);
 		} else if (buttonObj == returnBook) {
-
+			returnBook returned = new returnBook(this, books);
 		} else if (buttonObj == outputButton) {
-
+			OutputBooks output = new OutputBooks(this,books);
 		} else if (buttonObj == overdueButton) {
-
+			CheckOverdue overdue = new CheckOverdue(this, books);
 		} else if (buttonObj == searchButton) {
 			Search findBook = new Search(this, books);
 		}

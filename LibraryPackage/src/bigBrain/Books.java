@@ -7,16 +7,16 @@ public class Books {
 	private int month;
 	private int day;
 	private int year;
-	private boolean loaned = false;
+	private boolean loaned = true;
 	private boolean overdue = false;
 	
-	private Date d;
+	private Date checkOutDate;
 	
-	public Books(String bn, String a) {
-		title = bn;
+	public Books(String t, String a) {
+		title = t;
 		author = a;
 		borrower = null;
-		d = new Date();
+		checkOutDate = new Date();
 	}
 	public void setLoaned() {
 		loaned = !loaned;
@@ -31,13 +31,13 @@ public class Books {
 		return borrower;
 	}
 	public int getDay() {
-		return day;
+		return checkOutDate.getDay();
 	}
 	public int getMonth() {
-		return month;
+		return checkOutDate.getMonth();
 	}
 	public int getYear() {
-		return year;
+		return checkOutDate.getYear();
 	}
 	public boolean getLoaned() {
 		return loaned;
@@ -45,5 +45,22 @@ public class Books {
 	public boolean getOverdue() {
 		return overdue;
 	}
-	
+	public void setDate(Date d) {
+		checkOutDate = d;
+	}
+	public void setBorrower(String nm) {
+		borrower = nm;
+	}
+	public long getTimeInMili() {
+		return checkOutDate.setTimeMili();
+	}
+	public void setDay(int d) {
+		checkOutDate.setDay(d);
+	}
+	public void setMonth(int m) {
+		checkOutDate.setMonth(m);
+	}
+	public void setYear(int y) {
+		checkOutDate.setYear(y);
+	}
 }
