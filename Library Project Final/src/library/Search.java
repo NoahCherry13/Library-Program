@@ -17,10 +17,14 @@ public class Search extends GBDialog {
 	JLabel searchlbl = addLabel("Search Title: ", 1, 1, 1, 1);
 	JButton close = addButton("Close", 3, 2, 1, 1);
 	Date d = new Date();
+	
+	ArrayList <Books> editedList= new ArrayList<Books>();
+	
 
 	public Search(JFrame parent, ArrayList<Books> b) {
 		super(parent);
 		books = b;
+		infoArea.setEditable(false);
 		this.setVisible(true);
 		this.setSize(400, 400);
 	}
@@ -43,6 +47,11 @@ public class Search extends GBDialog {
 				messageBox("There are no books with the title " + searchField.getText());
 				return;
 			}
+			for(Books b :books) {
+				if (b.getTitle().equalsIgnoreCase(searchField.getText())) {
+					editedList.add(b);
+				}
+			}
 			populateList();
 		} else if (buttonObj == close) {
 			dispose();
@@ -62,7 +71,7 @@ public class Search extends GBDialog {
 
 	private void populateList() {
 		DefaultListModel DLM = new DefaultListModel();
-		for (Books b : books) {
+		for (Books b : editedList) {
 			if (b.getTitle().equalsIgnoreCase(searchField.getText()))
 				DLM.addElement(b.getTitle());
 		}
@@ -83,15 +92,12 @@ public class Search extends GBDialog {
 
 	}
 
-	public void listDoubleClicked(JList<String> list, String itemSelected) {
-		if (books.get(list.getSelectedIndex()).getLoaned()) {
-			infoArea.setText("Book Selected:\n" + books.get(list.getSelectedIndex()).toStringAvail());
-			revalidate();
-		} else {
-			infoArea.setText("Book Selected:\n" + books.get(list.getSelectedIndex()).toStringBorrowed());
-			revalidate();
-			return;
-		}
+	public void listDoubleClicked(JList<String> list, String itemClicked) {
+		Books selected = editedList.get(list.getSelectedIndex());
+		if (selected.getLoaned()) {
+			infoArea.setText("Selected Book: \n" + selected.toStringAvail());
+		}else infoArea.setText("Selected Book: \n" + selected.toStringBorrowed());
+		revalidate();
 	}
 
 }
