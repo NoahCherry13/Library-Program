@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class CheckOverdue extends GBDialog {
 	JLabel overduelbl = addLabel("Overdue:",1,1,1,1);
-	JLabel notOverduelbl = addLabel("Overdue:",1,2,1,1);
+	JLabel notOverduelbl = addLabel("Not Overdue:",1,2,1,1);
 	JButton closeButton = addButton("Close",3,1,1,1);
 	JTextArea overdueArea = addTextArea("", 2, 1, 1, 1);
 	JTextArea notOverdueArea = addTextArea("", 2, 2, 1, 1);
@@ -19,10 +19,10 @@ public class CheckOverdue extends GBDialog {
 		super(parent);
 		books = list;
 		setTextArea();
-		this.setVisible(true);
-		this.setSize(400, 400);
 		overdueArea.setEditable(false);
 		notOverdueArea.setEditable(false);
+		this.setVisible(true);
+		this.setSize(400, 400);
 	}
 
 	public void setTextArea() {

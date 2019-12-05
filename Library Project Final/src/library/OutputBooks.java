@@ -15,23 +15,28 @@ public class OutputBooks extends GBDialog {
 	public OutputBooks(JFrame parent, ArrayList<Books> list) {
 		super(parent);
 		books = list;
+		availableBooks.setEditable(false);
+		checkedOutArea.setEditable(false);
+		this.setSize(550, 400);
 		this.setVisible(true);
-		this.setSize(400, 400);
+		
 	}
 
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == outputButton) {
 			for (Books item : books) {
 				if (!item.getLoaned()) {
-					System.out.println("CheckedOut");
 					checkedOutArea.setText(checkedOutArea.getText() + "Book: " + item.getTitle()
 							+ "\n Name of Borrower: " + item.getBorrower() + "\n Date Checked Out: " + item.getMonth()
 							+ '/' + item.getDay() + '/' + item.getYear());
+					revalidate();
 				} else {
 					availableBooks.setText(availableBooks.getText() + "Book: " + item.getTitle()
-							+ "\n Name of Borrower: " + item.getBorrower() + "\n Date Checked Out: Null" );
+							+ "\n Name of Borrower: " + item.getBorrower() + "\n Date Checked Out: Null \n" );
+					revalidate();
 				}
 			}
+			revalidate();
 		}else if(buttonObj == close) {
 			dispose();
 		}
